@@ -12,6 +12,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = sanitize($_POST['email']);
     $password = $_POST['password'];
 
+
+
     $result = mysqli_query(
         $conn,
         "SELECT * FROM users WHERE email='$email'"
@@ -67,8 +69,13 @@ include 'includes/header.php';
             <div class="card shadow">
 
                 <div class="card-header text-center">
+
                     <h3>Login</h3>
-                    <p class="text-muted mb-0">Login to continue shopping.</p>
+
+                    <p class="text-muted">
+                        Login to continue shopping.
+                    </p>
+
                 </div>
 
                 <div class="card-body">
@@ -78,34 +85,59 @@ include 'includes/header.php';
                     <form method="POST">
 
                         <div class="mb-3">
-                            <label class="form-label">Email Address</label>
+
+                            <label class="form-label">
+                                Email Address
+                            </label>
+
                             <input
                                 type="email"
                                 name="email"
                                 class="form-control"
                                 required>
-                            </div>
+
+                        </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Password</label>
+
+                            <label class="form-label">
+                                Password
+                            </label>
+
                             <input
                                 type="password"
                                 name="password"
                                 class="form-control"
                                 required>
+
                         </div>
 
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-primary">Login</button>
+
+                            <button
+                                type="submit"
+                                class="btn btn-dark">
+
+                                Login
+
+                            </button>
+
                         </div>
 
                     </form>
 
                     <hr>
 
-                    <p class="text-center mb-0">
+                    <p class="text-center">
+
                         Don't have an account?
-                        <a href="register.php">Register here</a>
+
+                        <a href="register.php">
+
+                            Register Here
+
+                        </a>
+
                     </p>
 
                 </div>
@@ -118,11 +150,6 @@ include 'includes/header.php';
 
 </div>
 
-    <a href="register.php">
-
-        Register here
-
-    </a>
-</div>
-
-<?php include 'includes/footer.php'; ?>
+<?php
+include 'includes/footer.php';
+?>
