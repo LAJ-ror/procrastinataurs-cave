@@ -1,23 +1,35 @@
-    <footer class="bg-dark text-white text-center py-4 mt-5">
-        <div class="container">
+<footer class="bg-dark text-white mt-5 py-4">
 
-            <p class="mb-1">
-                &copy; <?php echo date("Y"); ?> Procrastinataurs' Cave. All Rights Reserved.
-            </p>
+    <div class="container text-center">
 
-            <p class="mb-1">
-                Group Name: Procrastinataurs
-            </p>
+        <h5>Procrastinataurs' Cave</h5>
 
-            <small>
-                This website is for educational purposes only and is a requirement for our final project.
-            </small>
+        <p class="mb-1">
+            Carry Style Everywhere.
+        </p>
 
-        </div>
-    </footer>
+        <small>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+            This website is for educational purposes only
+            and is a requirement for our Final Project.
+
+        </small>
+
+        <hr>
+
+        <small>
+
+            &copy; <?php echo date("Y"); ?>
+            Procrastinataurs' Cave.
+            All Rights Reserved.
+
+        </small>
+
+    </div>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
