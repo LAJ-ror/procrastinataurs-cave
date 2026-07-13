@@ -1,251 +1,103 @@
 <?php
+$currentPage = "home";
+
 require_once 'includes/db.php';
 include 'includes/header.php';
 ?>
 
-<!-- ========================================= -->
-<!-- Hero Section -->
-<!-- ========================================= -->
-
-<section class="hero-section py-5">
-
-    <div class="container">
-
-        <div class="row align-items-center">
-
-            <div class="col-md-6">
-
-                <h1 class="display-4 fw-bold">
-
-                    Carry Style Everywhere
-
-                </h1>
-
-                <p class="lead">
-
-                    Discover stylish bags designed for
-                    everyday life and every journey.
-
-                </p>
-
-                <a href="shop.php"
-                   class="btn btn-dark btn-lg">
-
-                    Shop Now
-
-                </a>
-
-            </div>
-
-            <div class="col-md-6 text-center">
-
-                <img src="assets/images/banner.jpg"
-                     class="img-fluid"
-                     alt="Banner">
-
-            </div>
-
-        </div>
-
-    </div>
-
+<section class="hero" aria-label="Fashion handbag collection">
+    <!-- IMAGE PATH: Palitan ang assets/images/hero-banner.jpg ng hero/banner image mo -->
+    <img src="assets/images/hero-banner.jpg" alt="Fashion models carrying handbags">
 </section>
 
-<!-- ========================================= -->
-<!-- Featured Products -->
-<!-- ========================================= -->
+<section class="collection-section" id="shop">
+    <div class="section-heading compact-heading">
+        <p class="eyebrow">Métiers d’Art 2026</p>
+        <p class="collection-label">Collection</p>
+        <h1>Handbags</h1>
+        <p>Discover a curated selection from the collection.</p>
+    </div>
 
-<section class="py-5">
+    <?php
+    // IMAGE PATHS: Palitan ang image filenames sa bawat product kapag may actual product images ka.
+    $products = [
+        ['name' => 'Maxi Flapbag', 'description' => 'Sequins & Gold-Tone Metal — Red & Multicolor', 'image' => 'product-1.jpg'],
+        ['name' => 'Maxi Flapbag', 'description' => 'Mixed Fibers & Gold-Tone Metal — Yellow, Black & Red', 'image' => 'product-2.jpg'],
+        ['name' => 'Classic 11.12 Handbag', 'description' => 'Embroidered Wool Crepe, Raffia, Glass Beads & Gold-Tone Metal', 'image' => 'product-3.jpg'],
+        ['name' => 'Mini Flap Bag', 'description' => 'Lambskin, Shearling Lambskin & Gold-Tone Metal', 'image' => 'product-4.jpg']
+    ];
+    ?>
 
-    <div class="container">
-
-        <h2 class="text-center mb-5">
-
-            Featured Products
-
-        </h2>
-
-        <div class="row">
-
-            <?php
-            for($i=1;$i<=4;$i++){
-            ?>
-
-            <div class="col-md-3 mb-4">
-
-                <div class="card shadow h-100">
-
-                    <img src="assets/images/products/product.jpg"
-                         class="card-img-top"
-                         alt="Product">
-
-                    <div class="card-body">
-
-                        <h5 class="card-title">
-
-                            Sample Bag
-
-                        </h5>
-
-                        <p>
-
-                            ₱1,499.00
-
-                        </p>
-
-                        <a href="shop.php"
-                           class="btn btn-outline-dark w-100">
-
-                            View Product
-
-                        </a>
-
-                    </div>
-
+    <div class="product-grid">
+        <?php foreach ($products as $product): ?>
+            <article class="product-card">
+                <div class="product-image-wrap">
+                    <!-- PRODUCT IMAGE PATH: Galing sa image value sa $products array sa taas -->
+                    <img src="assets/images/<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
                 </div>
-
-            </div>
-
-            <?php
-            }
-            ?>
-
-        </div>
-
+                <h2><?= htmlspecialchars($product['name']) ?></h2>
+                <p><?= htmlspecialchars($product['description']) ?></p>
+            </article>
+        <?php endforeach; ?>
     </div>
 
-</section>
+    <div class="featured-grid">
+        <article class="featured-product">
+            <!-- IMAGE PATH: Palitan ang assets/images/featured-1.jpg -->
+            <img src="assets/images/featured-1.jpg" alt="Apple-shaped minaudiere handbag">
+            <h2>Apple Minaudiere</h2>
+            <p>Lacquered Metal, Enamel & Gold-Tone Metal — Red, Green & Golden</p>
+        </article>
 
-<!-- ========================================= -->
-<!-- Categories -->
-<!-- ========================================= -->
-
-<section class="bg-light py-5">
-
-    <div class="container">
-
-        <h2 class="text-center mb-5">
-
-            Categories
-
-        </h2>
-
-        <div class="row text-center">
-
-            <div class="col-md-3">
-
-                <h4>🎒</h4>
-
-                <h5>Backpacks</h5>
-
-            </div>
-
-            <div class="col-md-3">
-
-                <h4>👜</h4>
-
-                <h5>Handbags</h5>
-
-            </div>
-
-            <div class="col-md-3">
-
-                <h4>💼</h4>
-
-                <h5>Travel Bags</h5>
-
-            </div>
-
-            <div class="col-md-3">
-
-                <h4>🧳</h4>
-
-                <h5>Luggage</h5>
-
-            </div>
-
-        </div>
-
+        <article class="featured-product">
+            <!-- IMAGE PATH: Palitan ang assets/images/featured-2.jpg -->
+            <img src="assets/images/featured-2.jpg" alt="Dark burgundy mini flap bag">
+            <h2>Mini Flap Bag</h2>
+            <p>Lambskin & Gold-Tone Metal — Dark Burgundy</p>
+        </article>
     </div>
 
+    <a href="#categories" class="primary-button">Discover More</a>
 </section>
 
-<!-- ========================================= -->
-<!-- Why Choose Us -->
-<!-- ========================================= -->
-
-<section class="py-5">
-
-    <div class="container">
-
-        <h2 class="text-center mb-5">
-
-            Why Choose Us
-
-        </h2>
-
-        <div class="row text-center">
-
-            <div class="col-md-4">
-
-                <i class="bi bi-truck fs-1"></i>
-
-                <h5 class="mt-3">
-
-                    Fast Delivery
-
-                </h5>
-
-                <p>
-
-                    Receive your orders quickly and safely.
-
-                </p>
-
-            </div>
-
-            <div class="col-md-4">
-
-                <i class="bi bi-shield-check fs-1"></i>
-
-                <h5 class="mt-3">
-
-                    Secure Shopping
-
-                </h5>
-
-                <p>
-
-                    Your information is protected.
-
-                </p>
-
-            </div>
-
-            <div class="col-md-4">
-
-                <i class="bi bi-star-fill fs-1"></i>
-
-                <h5 class="mt-3">
-
-                    Quality Products
-
-                </h5>
-
-                <p>
-
-                    Premium bags at affordable prices.
-
-                </p>
-
-            </div>
-
-        </div>
-
+<section class="perfect-bag-section">
+    <div class="perfect-bag-copy">
+        <h2>Find Your Perfect Bag</h2>
+        <p><strong>Some text here omfg.</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, voluptas. Find the silhouette, size, and style that matches your everyday routine.</p>
+        <a href="#shop" class="light-button">Shop Here</a>
     </div>
 
+    <!-- IMAGE PATH: Palitan ang assets/images/perfect-bag.jpg -->
+    <img src="assets/images/perfect-bag.jpg" alt="Models carrying handbags">
 </section>
 
-<?php
-include 'includes/footer.php';
-?>
+<section class="variations-section" id="categories">
+    <div class="section-heading">
+        <h2>Different Variations</h2>
+    </div>
+
+    <?php
+    // IMAGE PATHS: Palitan ang image filenames sa bawat category kapag may actual category images ka.
+    $categories = [
+        ['title' => 'Category 1', 'image' => 'category-1.jpg'],
+        ['title' => 'Category 2', 'image' => 'category-2.jpg'],
+        ['title' => 'Category 3', 'image' => 'category-3.jpg'],
+        ['title' => 'Category 4', 'image' => 'category-4.jpg']
+    ];
+    ?>
+
+    <div class="category-list">
+        <?php foreach ($categories as $index => $category): ?>
+            <article class="category-row <?= $index % 2 === 1 ? 'reverse' : '' ?>">
+                <!-- CATEGORY IMAGE PATH: Galing sa image value sa $categories array sa taas -->
+                <img src="assets/images/<?= htmlspecialchars($category['image']) ?>" alt="<?= htmlspecialchars($category['title']) ?> bag category">
+                <div class="category-copy">
+                    <h3><?= htmlspecialchars($category['title']) ?></h3>
+                    <p><strong>Some text here omfg.</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinct bags, practical shapes, and carefully selected materials for different styles and occasions.</p>
+                </div>
+            </article>
+        <?php endforeach; ?>
+    </div>
+</section>
+
+<?php include 'footer.php'; ?>
