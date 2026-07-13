@@ -1,35 +1,36 @@
-<footer class="bg-dark text-white mt-5 py-4">
+</main>
+<footer class="site-footer" id="about">
+    <div class="footer-inner">
+        <div class="footer-column">
+            <h3>Services</h3>
+            <a href="#">Payment Methods</a>
+            <a href="#">Shipping Options</a>
+            <a href="#">My Account</a>
+            <a href="#">Start a Return</a>
+            <a href="#">Return Policy</a>
+            <a href="#">FAQ</a>
+            <a href="#">Care &amp; Services</a>
+            <a href="#">E-Gift Card</a>
+        </div>
 
-    <div class="container text-center">
+        <div class="footer-column">
+            <h3>Procrastinataurs</h3>
+            <a href="#">GitHub</a>
+            <a href="mailto:hello@procrastinataurs.test">Email</a>
+        </div>
 
-        <h5>Procrastinataurs' Cave</h5>
+        <div class="footer-art" aria-hidden="true">
+            <!-- ICON/SVG PATH: Palitan ang symbols sa ibaba ng sarili mong globe/bag icons o inline SVG -->
+            <div class="footer-symbols">◎ 〰 ?!</div>
 
-        <p class="mb-1">
-            Carry Style Everywhere.
-        </p>
-
-        <small>
-
-            This website is for educational purposes only
-            and is a requirement for our Final Project.
-
-        </small>
-
-        <hr>
-
-        <small>
-
-            &copy; <?php echo date("Y"); ?>
-            Procrastinataurs' Cave.
-            All Rights Reserved.
-
-        </small>
-
+            <!-- IMAGE/SVG PATH: Palitan ang emoji sketch ng <img src="assets/images/footer-dino.svg"> o sarili mong file -->
+            <div class="dino-sketch">🦖<span>💻</span></div>
+        </div>
     </div>
 
+    <div class="copyright">
+        © <?= date('Y') ?> Procrastinataurs’ Cave. School project UI concept.
+    </div>
 </footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>
