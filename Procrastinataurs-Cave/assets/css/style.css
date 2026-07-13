@@ -400,7 +400,7 @@ a {
 
 .footer-art {
     justify-self: end;
-    min-width: 310px;
+    min-width: 200px;
     text-align: center;
 }
 
@@ -409,17 +409,6 @@ a {
     letter-spacing: 0.15em;
 }
 
-.dino-sketch {
-    margin-top: 12px;
-    font-size: 7rem;
-    line-height: 1;
-    filter: grayscale(1) brightness(4);
-}
-
-.dino-sketch span {
-    font-size: 3.3rem;
-    vertical-align: bottom;
-}
 
 .copyright {
     padding: 14px 20px;
@@ -429,119 +418,3 @@ a {
     font-size: 0.6rem;
 }
 
-@media (max-width: 900px) {
-    .header-inner {
-        grid-template-columns: 1fr auto;
-    }
-
-    .main-nav {
-        grid-column: 1 / -1;
-        justify-content: center;
-        order: 3;
-        border-top: 1px solid var(--line);
-    }
-
-    .main-nav a {
-        padding: 14px 0;
-    }
-
-    .main-nav a::after {
-        bottom: 8px;
-    }
-
-    .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .perfect-bag-section {
-        grid-template-columns: 1fr 240px;
-        gap: 35px;
-    }
-
-    .category-row,
-    .category-row.reverse {
-        grid-template-columns: 240px 1fr;
-    }
-
-    .category-row.reverse img {
-        order: 0;
-    }
-}
-
-@media (max-width: 650px) {
-    .header-inner {
-        width: min(100% - 24px, 1180px);
-        gap: 12px;
-    }
-
-    .brand span {
-        font-size: 0.92rem;
-    }
-
-    .main-nav {
-        gap: 18px;
-        overflow-x: auto;
-        justify-content: flex-start;
-    }
-
-    .sign-in-button {
-        min-width: auto;
-    }
-
-    .hero {
-        height: 230px;
-    }
-
-    .collection-section,
-    .variations-section {
-        width: min(100% - 28px, 1100px);
-    }
-
-    .collection-section {
-        padding-top: 60px;
-    }
-
-    .product-grid,
-    .featured-grid,
-    .perfect-bag-section,
-    .category-row,
-    .category-row.reverse,
-    .footer-inner {
-        grid-template-columns: 1fr;
-    }
-
-    .product-image-wrap {
-        min-height: 260px;
-    }
-
-    .featured-product img {
-        height: 420px;
-    }
-
-    .perfect-bag-section {
-        padding: 55px 28px;
-    }
-
-    .perfect-bag-section > img {
-        height: 330px;
-    }
-
-    .category-row img,
-    .category-copy {
-        min-height: 220px;
-        height: auto;
-    }
-
-    .category-copy {
-        padding: 32px;
-    }
-
-    .category-row.reverse img {
-        order: 0;
-    }
-
-    .footer-art {
-        justify-self: start;
-        min-width: 0;
-    }
-}
