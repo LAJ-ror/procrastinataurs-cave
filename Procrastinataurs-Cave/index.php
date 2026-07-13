@@ -5,10 +5,36 @@ require_once 'includes/db.php';
 include 'includes/header.php';
 ?>
 
-<section class="hero" aria-label="Fashion handbag collection">
-    <!-- IMAGE PATH: Palitan ang assets/images/hero-banner.jpg ng hero/banner image mo -->
-    <img src="assets/images/hero-banner.jpg" alt="Fashion models carrying handbags">
-</section>
+<!-- BOOTSTRAP CODE HERE -->
+
+<div id="carouselExampleIndicators" class="carousel slide">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="assets/images/CarouselPhoto1.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="assets/images/CarouselPhoto2.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="assets/images/CarouselPhoto3.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!-- BOOTSTRAP END -->
 
 <section class="collection-section" id="shop">
     <div class="section-heading compact-heading">
@@ -21,10 +47,10 @@ include 'includes/header.php';
     <?php
     // IMAGE PATHS: Palitan ang image filenames sa bawat product kapag may actual product images ka.
     $products = [
-        ['name' => 'Maxi Flapbag', 'description' => 'Sequins & Gold-Tone Metal — Red & Multicolor', 'image' => 'product-1.jpg'],
-        ['name' => 'Maxi Flapbag', 'description' => 'Mixed Fibers & Gold-Tone Metal — Yellow, Black & Red', 'image' => 'product-2.jpg'],
-        ['name' => 'Classic 11.12 Handbag', 'description' => 'Embroidered Wool Crepe, Raffia, Glass Beads & Gold-Tone Metal', 'image' => 'product-3.jpg'],
-        ['name' => 'Mini Flap Bag', 'description' => 'Lambskin, Shearling Lambskin & Gold-Tone Metal', 'image' => 'product-4.jpg']
+        ['name' => 'Maxi Flapbag', 'description' => 'Sequins & Gold-Tone Metal — Red & Multicolor', 'image' => 'bag001.jpg'],
+        ['name' => 'Maxi Flapbag', 'description' => 'Mixed Fibers & Gold-Tone Metal — Yellow, Black & Red', 'image' => 'bag002.jpg'],
+        ['name' => 'Classic 11.12 Handbag', 'description' => 'Embroidered Wool Crepe, Raffia, Glass Beads & Gold-Tone Metal', 'image' => 'bag003.jpg'],
+        ['name' => 'Mini Flap Bag', 'description' => 'Lambskin, Shearling Lambskin & Gold-Tone Metal', 'image' => 'bag004.jpg']
     ];
     ?>
 
@@ -33,7 +59,7 @@ include 'includes/header.php';
             <article class="product-card">
                 <div class="product-image-wrap">
                     <!-- PRODUCT IMAGE PATH: Galing sa image value sa $products array sa taas -->
-                    <img src="assets/images/<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+                    <img src="assets/images/bag_photos<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
                 </div>
                 <h2><?= htmlspecialchars($product['name']) ?></h2>
                 <p><?= htmlspecialchars($product['description']) ?></p>
