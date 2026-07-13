@@ -1,4 +1,7 @@
 <?php
+$currentPage = "about";
+
+require_once 'includes/db.php';
 include 'includes/header.php';
 ?>
 
