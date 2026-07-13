@@ -45,12 +45,11 @@ include 'includes/header.php';
     </div>
 
     <?php
-    // IMAGE PATHS: Palitan ang image filenames sa bawat product kapag may actual product images ka.
     $products = [
-        ['name' => 'Maxi Flapbag', 'description' => 'Sequins & Gold-Tone Metal — Red & Multicolor', 'image' => 'bag001.jpg'],
-        ['name' => 'Maxi Flapbag', 'description' => 'Mixed Fibers & Gold-Tone Metal — Yellow, Black & Red', 'image' => 'bag002.jpg'],
-        ['name' => 'Classic 11.12 Handbag', 'description' => 'Embroidered Wool Crepe, Raffia, Glass Beads & Gold-Tone Metal', 'image' => 'bag003.jpg'],
-        ['name' => 'Mini Flap Bag', 'description' => 'Lambskin, Shearling Lambskin & Gold-Tone Metal', 'image' => 'bag004.jpg']
+        ['name' => 'Maxi Flapbag', 'description' => 'Sequins & Gold-Tone Metal — Red & Multicolor', 'image' => 'bag001.svg'],
+        ['name' => 'Maxi Flapbag', 'description' => 'Mixed Fibers & Gold-Tone Metal — Yellow, Black & Red', 'image' => 'bag002.svg'],
+        ['name' => 'Classic 11.12 Handbag', 'description' => 'Embroidered Wool Crepe, Raffia, Glass Beads & Gold-Tone Metal', 'image' => 'bag003.svg'],
+        ['name' => 'Mini Flap Bag', 'description' => 'Lambskin, Shearling Lambskin & Gold-Tone Metal', 'image' => 'bag004.svg']
     ];
     ?>
 
@@ -58,7 +57,6 @@ include 'includes/header.php';
         <?php foreach ($products as $product): ?>
             <article class="product-card">
                 <div class="product-image-wrap">
-                    <!-- PRODUCT IMAGE PATH: Galing sa image value sa $products array sa taas -->
                     <img src="assets/images/bag_photos/<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
                 </div>
                 <h2><?= htmlspecialchars($product['name']) ?></h2>
@@ -69,15 +67,13 @@ include 'includes/header.php';
 
     <div class="featured-grid">
         <article class="featured-product">
-            <!-- IMAGE PATH: Palitan ang assets/images/featured-1.jpg -->
-            <img src="assets/images/featured-1.jpg" alt="Apple-shaped minaudiere handbag">
+            <img src="assets/images/bag_photos/bag005.svg" alt="Apple-shaped minaudiere handbag">
             <h2>Apple Minaudiere</h2>
             <p>Lacquered Metal, Enamel & Gold-Tone Metal — Red, Green & Golden</p>
         </article>
 
         <article class="featured-product">
-            <!-- IMAGE PATH: Palitan ang assets/images/featured-2.jpg -->
-            <img src="assets/images/featured-2.jpg" alt="Dark burgundy mini flap bag">
+            <img src="assets/images/bag_photos/bag006.svg" alt="Dark burgundy mini flap bag">
             <h2>Mini Flap Bag</h2>
             <p>Lambskin & Gold-Tone Metal — Dark Burgundy</p>
         </article>
@@ -89,12 +85,12 @@ include 'includes/header.php';
 <section class="perfect-bag-section">
     <div class="perfect-bag-copy">
         <h2>Find Your Perfect Bag</h2>
-        <p><strong>Some text here omfg.</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, voluptas. Find the silhouette, size, and style that matches your everyday routine.</p>
-        <a href="#shop" class="light-button">Shop Here</a>
+        <p>Some text here omfg. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, voluptas. Find the silhouette, size, and style that matches your everyday routine.</p>
+        <a href="shop.php" class="light-button">Shop Here</a>
     </div>
 
     <!-- IMAGE PATH: Palitan ang assets/images/perfect-bag.jpg -->
-    <img src="assets/images/perfect-bag.jpg" alt="Models carrying handbags">
+    <img src="assets/images/model_photo.svg" alt="Models carrying handbags">
 </section>
 
 <section class="variations-section" id="categories">
@@ -105,10 +101,10 @@ include 'includes/header.php';
     <?php
     // IMAGE PATHS: Palitan ang image filenames sa bawat category kapag may actual category images ka.
     $categories = [
-        ['title' => 'Category 1', 'image' => 'category-1.jpg'],
-        ['title' => 'Category 2', 'image' => 'category-2.jpg'],
-        ['title' => 'Category 3', 'image' => 'category-3.jpg'],
-        ['title' => 'Category 4', 'image' => 'category-4.jpg']
+        ['title' => 'Handbags', 'image' => 'category-1.jpg'],
+        ['title' => 'Backpacks', 'image' => 'category-2.jpg'],
+        ['title' => 'Travel Bags', 'image' => 'category-3.jpg'],
+        ['title' => 'Luggage', 'image' => 'category-4.jpg']
     ];
     ?>
 
@@ -126,4 +122,4 @@ include 'includes/header.php';
     </div>
 </section>
 
-<?php include 'footer.php'; ?>
+<?php include 'includes/footer.php'; ?>
