@@ -59,7 +59,7 @@ include 'includes/header.php';
             <article class="product-card">
                 <div class="product-image-wrap">
                     <!-- PRODUCT IMAGE PATH: Galing sa image value sa $products array sa taas -->
-                    <img src="assets/images/bag_photos<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+                    <img src="assets/images/bag_photos/<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
                 </div>
                 <h2><?= htmlspecialchars($product['name']) ?></h2>
                 <p><?= htmlspecialchars($product['description']) ?></p>
