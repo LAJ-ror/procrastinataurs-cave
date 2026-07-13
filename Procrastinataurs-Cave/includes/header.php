@@ -1,189 +1,53 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Procrastinataurs' Cave</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-          rel="stylesheet">
-
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet"
-          href="assets/css/style.css">
-
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
 <body>
-
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-
-    <div class="container">
-
-        <!-- Logo -->
-
-        <a class="navbar-brand fw-bold d-flex align-items-center"
-           href="index.php">
-
-            <!-- Replace this later with your SVG logo -->
-            <i class="bi bi-handbag-fill fs-3 me-2"></i>
-
-            Procrastinataurs' Cave
-
+<header class="site-header">
+    <div class="header-inner">
+        <a class="brand" href="index.php" aria-label="Procrastinataurs' Cave Home">
+            <!-- IMAGE PATH: Palitan ang assets/images/logo.png ng path ng logo mo -->
+            <img src="assets/images/logo.png" alt="Procrastinataurs' Cave logo" class="brand-logo">
+            <span>Procrastinataurs’ Cave</span>
         </a>
 
-        <!-- Mobile Toggle -->
+        <nav class="nav-links">
+            <a href="index.php"
+            class="<?php if ($currentPage == 'home') echo 'active'; ?>">
+                Home
+            </a>
 
-        <button class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav">
+            <a href="shop.php"
+            class="<?php if ($currentPage == 'shop') echo 'active'; ?>">
+                Shop
+            </a>
 
-            <span class="navbar-toggler-icon"></span>
+            <a href="categories.php"
+            class="<?php if ($currentPage == 'categories') echo 'active'; ?>">
+                Categories
+            </a>
 
-        </button>
+            <a href="about.php"
+            class="<?php if ($currentPage == 'about') echo 'active'; ?>">
+                About Us
+            </a>
+        </nav>
 
-        <div class="collapse navbar-collapse"
-             id="navbarNav">
-
-            <!-- Left Menu -->
-
-            <ul class="navbar-nav ms-auto">
-
-                <li class="nav-item">
-
-                    <a class="nav-link"
-                       href="index.php">
-
-                        Home
-
-                    </a>
-
-                </li>
-
-                <li class="nav-item">
-
-                    <a class="nav-link"
-                       href="shop.php">
-
-                        Shop
-
-                    </a>
-
-                </li>
-
-                <li class="nav-item">
-
-                    <a class="nav-link"
-                       href="about.php">
-
-                        About Us
-
-                    </a>
-
-                </li>
-
-                <?php if(isset($_SESSION['user_id'])) { ?>
-
-                    <li class="nav-item">
-
-                        <a class="nav-link"
-                           href="cart.php">
-
-                            <i class="bi bi-cart"></i>
-
-                            Cart
-
-                        </a>
-
-                    </li>
-
-                    <li class="nav-item dropdown">
-
-                        <a class="nav-link dropdown-toggle"
-                           href="#"
-                           role="button"
-                           data-bs-toggle="dropdown">
-
-                            Hi,
-                            <?php echo $_SESSION['first_name']; ?>
-
-                        </a>
-
-                        <ul class="dropdown-menu">
-
-                            <li>
-
-                                <a class="dropdown-item"
-                                   href="orders.php">
-
-                                    My Orders
-
-                                </a>
-
-                            </li>
-
-                            <li>
-
-                                <a class="dropdown-item"
-                                   href="logout.php">
-
-                                    Logout
-
-                                </a>
-
-                            </li>
-
-                        </ul>
-
-                    </li>
-
-                <?php } else { ?>
-
-                    <li class="nav-item">
-
-                        <a class="nav-link"
-                           href="login.php">
-
-                            Login
-
-                        </a>
-
-                    </li>
-
-                    <li class="nav-item">
-
-                        <a class="btn btn-dark ms-2"
-                           href="register.php">
-
-                            Register
-
-                        </a>
-
-                    </li>
-
-                <?php } ?>
-
-            </ul>
-
+        <div class="header-actions">
+            <!-- ICON/SVG: Palitan ang text icon sa loob ng button ng sarili mong icon o SVG -->
+            <button class="icon-button" type="button" aria-label="Search">⌕</button>
+            <a class="sign-in-button" href="#">Sign In</a>
         </div>
-
     </div>
-
-</nav>
+</header>
+<main>
