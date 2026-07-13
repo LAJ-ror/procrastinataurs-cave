@@ -20,16 +20,12 @@
         </div>
 
         <div class="footer-art" aria-hidden="true">
-            <!-- ICON/SVG PATH: Palitan ang symbols sa ibaba ng sarili mong globe/bag icons o inline SVG -->
-            <div class="footer-symbols">◎ 〰 ?!</div>
-
-            <!-- IMAGE/SVG PATH: Palitan ang emoji sketch ng <img src="assets/images/footer-dino.svg"> o sarili mong file -->
-            <div class="dino-sketch">🦖<span>💻</span></div>
+            <img src="assets/images/Temp_Footer_Logo.svg" alt="Procrastinataurs' Cave logo" class="footer-logo">
         </div>
     </div>
 
     <div class="copyright">
-        © <?= date('Y') ?> Procrastinataurs’ Cave. School project UI concept.
+        © 2026 Procrastinataurs’ Cave. This website is for educational purposes only and is a requirement for our final project.
     </div>
 </footer>
 </body>
