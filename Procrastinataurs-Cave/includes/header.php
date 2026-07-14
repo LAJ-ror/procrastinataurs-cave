@@ -21,7 +21,6 @@ if (session_status() === PHP_SESSION_NONE) {
 <header class="site-header">
     <div class="header-inner">
         <a class="brand" href="index.php" aria-label="Procrastinataurs' Cave Home">
-            <!-- IMAGE PATH: Palitan ang assets/images/logo.png ng path ng logo mo -->
             <img src="assets/images/Temp_Logo.svg" alt="Procrastinataurs' Cave logo" class="brand-logo">
             <span>Procrastinataurs’ Cave</span>
         </a>
@@ -44,9 +43,8 @@ if (session_status() === PHP_SESSION_NONE) {
         </nav>
 
         <div class="header-actions">
-            <!-- ICON/SVG: Palitan ang text icon sa loob ng button ng sarili mong icon o SVG -->
             <button class="icon-button" type="button" aria-label="Search">⌕</button>
-            <a class="sign-in-button" href="login.php">Sign In</a>
+            <a class="sign-in-button" href="login.php">Log In</a>
         </div>
     </div>
 </header>
