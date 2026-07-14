@@ -89,7 +89,6 @@ include 'includes/header.php';
         <a href="shop.php" class="light-button">Shop Here</a>
     </div>
 
-    <!-- IMAGE PATH: Palitan ang assets/images/perfect-bag.jpg -->
     <img src="assets/images/model_photo.svg" alt="Models carrying handbags">
 </section>
 
@@ -99,7 +98,6 @@ include 'includes/header.php';
     </div>
 
     <?php
-    // IMAGE PATHS: Palitan ang image filenames sa bawat category kapag may actual category images ka.
     $categories = [
         ['title' => 'Handbags', 'image' => 'category-1.jpg'],
         ['title' => 'Backpacks', 'image' => 'category-2.jpg'],
@@ -111,7 +109,6 @@ include 'includes/header.php';
     <div class="category-list">
         <?php foreach ($categories as $index => $category): ?>
             <article class="category-row <?= $index % 2 === 1 ? 'reverse' : '' ?>">
-                <!-- CATEGORY IMAGE PATH: Galing sa image value sa $categories array sa taas -->
                 <img src="assets/images/<?= htmlspecialchars($category['image']) ?>" alt="<?= htmlspecialchars($category['title']) ?> bag category">
                 <div class="category-copy">
                     <h3><?= htmlspecialchars($category['title']) ?></h3>
