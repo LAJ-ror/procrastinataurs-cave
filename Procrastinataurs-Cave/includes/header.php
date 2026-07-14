@@ -72,12 +72,8 @@ if (isset($_SESSION['user_id'])) {
         </div>
     </div>
 </header>
-<<<<<<< HEAD
 <main>
 
 <?php
 }
 ?>
-=======
-<main>
->>>>>>> 64bc48dff2626e049a993baa9e050e302d962310
