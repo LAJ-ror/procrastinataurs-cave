@@ -92,6 +92,10 @@ a {
     background: var(--olive-dark);
 }
 
+.nav-links a{
+    word-spacing: 1rem;
+}
+
 .header-actions {
     justify-self: end;
     display: flex;
@@ -371,7 +375,7 @@ a {
 }
 
 .footer-inner {
-    width: min(1100px, calc(100% - 40px));
+    width: 80%;
     margin: auto;
     padding: 55px 0;
     display: grid;
@@ -383,7 +387,8 @@ a {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 7px;
+    margin: 2rem;
+    gap: 4px;
 }
 
 .footer-column h3 {
@@ -400,8 +405,26 @@ a {
 
 .footer-art {
     justify-self: end;
-    min-width: 200px;
+    align-self: center;
+    width: 100%;
+    max-width: 500px;
     text-align: center;
+}
+
+.footer-art img {
+    width: 100%;
+    max-width: 500px;
+    height: 280px;
+    object-fit: contain;
+    object-position: center;
+}
+
+.footer-art svg {
+    width: 100%;
+    max-width: 500px;
+    height: 280px;
+    display: block;
+    margin-left: auto;
 }
 
 .footer-symbols {
