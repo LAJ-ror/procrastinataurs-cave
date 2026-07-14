@@ -2,7 +2,7 @@
     --ink: #171717;
     --paper: #ffffff;
     --olive: #536247;
-    --olive-dark: #3f4c36;
+    --olive-dark: #343f2c;
     --sage: #a9b99e;
     --soft-gray: #f5f5f3;
     --line: #deded8;
@@ -13,6 +13,7 @@
 }
 
 html {
+    min-height: 100%;
     scroll-behavior: smooth;
 }
 
@@ -87,13 +88,9 @@ a {
     background: transparent;
 }
 
-.main-nav a:hover::after,
-.main-nav a.active::after {
-    background: var(--olive-dark);
-}
 
 .nav-links a{
-    word-spacing: 1rem;
+    margin-left: 1rem;
 }
 
 .header-actions {
@@ -377,7 +374,7 @@ a {
 .footer-inner {
     width: 80%;
     margin: auto;
-    padding: 55px 0;
+    padding: 1px 0;
     display: grid;
     grid-template-columns: 180px 230px 1fr;
     gap: 50px;
