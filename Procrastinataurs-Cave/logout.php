@@ -16,8 +16,14 @@ if (isset($_SESSION['user_id'])) {
     );
 
 }
+if (isset($_SESSION['user_id'])) {
+    recordAudit($conn, "Buyer", $_SESSION['user_id'], "User Logged Out");
+}
+setcookie('remember_email', '', time() - 3600, '/');
+
 
 // Destroy session
+session_unset();
 session_destroy();
 
 // Redirect to login page
