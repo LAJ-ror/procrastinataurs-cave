@@ -99,20 +99,20 @@ include 'includes/header.php';
 
     <?php
     $categories = [
-        ['title' => 'Handbags', 'image' => 'category-1.jpg'],
-        ['title' => 'Backpacks', 'image' => 'category-2.jpg'],
-        ['title' => 'Travel Bags', 'image' => 'category-3.jpg'],
-        ['title' => 'Luggage', 'image' => 'category-4.jpg']
+        ['title' => 'Handbags', 'image' => 'handbags.jpg'],
+        ['title' => 'Backpacks', 'image' => 'backpacks.jpg'],
+        ['title' => 'Travel Bags', 'image' => 'workbag.jpg'],
+        ['title' => 'Luggage', 'image' => 'luggage.jpg']
     ];
     ?>
 
     <div class="category-list">
         <?php foreach ($categories as $index => $category): ?>
             <article class="category-row <?= $index % 2 === 1 ? 'reverse' : '' ?>">
-                <img src="assets/images/<?= htmlspecialchars($category['image']) ?>" alt="<?= htmlspecialchars($category['title']) ?> bag category">
+                <img src="assets/images/category_bags_photos/<?= htmlspecialchars($category['image']) ?>" alt="<?= htmlspecialchars($category['title']) ?> bag category">
                 <div class="category-copy">
                     <h3><?= htmlspecialchars($category['title']) ?></h3>
-                    <p><strong>Some text here omfg.</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinct bags, practical shapes, and carefully selected materials for different styles and occasions.</p>
+                    <p>Some text here omfg. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinct bags, practical shapes, and carefully selected materials for different styles and occasions.</p>
                 </div>
             </article>
         <?php endforeach; ?>
