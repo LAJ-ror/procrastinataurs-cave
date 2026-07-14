@@ -2,6 +2,30 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+if (isset($_SESSION['user_id'])) {
+?>
+
+    <li class="nav-item">
+        <a class="nav-link" href="cart.php">
+            <i class="bi bi-cart"></i> Cart
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <span class="nav-link">
+            Hi, <?php echo htmlspecialchars($_SESSION['first_name']); ?>
+        </span>
+    </li>
+
+    <li class="nav-item">
+        <a class="btn btn-outline-dark ms-2" href="logout.php">
+            Logout
+        </a>
+    </li>
+
+<?php
+} else {
 ?>
 
 <!DOCTYPE html>
@@ -27,17 +51,17 @@ if (session_status() === PHP_SESSION_NONE) {
 
         <nav class="nav-links">
             <a href="index.php"
-            class="<?php if ($currentPage == 'home') echo 'active'; ?>">
+               class="<?php if ($currentPage == 'home') echo 'active'; ?>">
                 Home
             </a>
 
             <a href="shop.php"
-            class="<?php if ($currentPage == 'shop') echo 'active'; ?>">
+               class="<?php if ($currentPage == 'shop') echo 'active'; ?>">
                 Shop
             </a>
 
             <a href="about.php"
-            class="<?php if ($currentPage == 'about') echo 'active'; ?>">
+               class="<?php if ($currentPage == 'about') echo 'active'; ?>">
                 About Us
             </a>
         </nav>
@@ -49,3 +73,7 @@ if (session_status() === PHP_SESSION_NONE) {
     </div>
 </header>
 <main>
+
+<?php
+}
+?>
