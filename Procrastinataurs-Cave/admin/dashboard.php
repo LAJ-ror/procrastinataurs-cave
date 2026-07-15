@@ -10,8 +10,7 @@ if (!isset($_SESSION['admin_id'])) {
     header("Location: login.php");
     exit();
 }
-
-include '../includes/header.php';
+;
 
 // Counts
 $product_count = 0;
@@ -43,6 +42,28 @@ if ($stock_result) {
     $stock_count = $stock_row['total_stock'] ? $stock_row['total_stock'] : 0;
 }
 ?>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procrastinataurs' Cave</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+</head>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a class="brand" href="../index.php" aria-label="Procrastinataurs' Cave Home">
+            <img src="../assets/images/Temp_Logo.svg" alt="Procrastinataurs' Cave logo" class="brand-logo">
+            <span>Procrastinataurs’ Cave</span>
+        </a>
+    </div>
+</header>
 
 <div class="container my-5">
     <h1 class="fw-bold mb-4">Admin Dashboard</h1>
