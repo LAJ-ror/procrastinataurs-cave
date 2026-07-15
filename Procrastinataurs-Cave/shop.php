@@ -40,10 +40,10 @@ include 'includes/header.php';
             <!-- Card 1 -->
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
-                    <img src="assets/images/products/product1.jpg" class="card-img-top" alt="Classic Backpack">
+                    <img src="assets/images/product_bags/handbag.avif" class="card-img-top" alt="Handbag">
                     <div class="card-body">
-                        <h5 class="card-title">Tote Bag</h5>
-                        <p class="text-muted mb-2">₱1,499.00</p>
+                        <h5 class="card-title">Handbag</h5>
+                        <p class="text-muted mb-2">₱380,575.00</p>
                         <p class="small">Perfect for students and everyday use.</p>
                     </div>
                     <div class="card-footer bg-white border-0">
@@ -56,10 +56,10 @@ include 'includes/header.php';
             <!-- Card 2 -->
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
-                    <img src="assets/images/products/product1.jpg" class="card-img-top" alt="Classic Backpack">
+                    <img src="assets/images/product_bags/backpack.webp" class="card-img-top" alt="Classic Backpack">
                     <div class="card-body">
-                        <h5 class="card-title">Shoulder bag</h5>
-                        <p class="text-muted mb-2">₱1,499.00</p>
+                        <h5 class="card-title">Backpack</h5>
+                        <p class="text-muted mb-2">₱202,573.00</p>
                         <p class="small">Perfect for students and everyday use.</p>
                     </div>
                     <div class="card-footer bg-white border-0">
@@ -72,10 +72,10 @@ include 'includes/header.php';
             <!-- Card 3 -->
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
-                    <img src="assets/images/products/product1.jpg" class="card-img-top" alt="Classic Backpack">
+                    <img src="assets/images/product_bags/travebag.webp" class="card-img-top" alt="Travel Bag">
                     <div class="card-body">
-                        <h5 class="card-title">Classic Backpack</h5>
-                        <p class="text-muted mb-2">₱1,499.00</p>
+                        <h5 class="card-title">Travel Bag</h5>
+                        <p class="text-muted mb-2">₱1,043,524.00</p>
                         <p class="small">Perfect for students and everyday use.</p>
                     </div>
                     <div class="card-footer bg-white border-0">
@@ -88,10 +88,10 @@ include 'includes/header.php';
             <!-- Card 4 -->
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
-                    <img src="assets/images/products/product1.jpg" class="card-img-top" alt="Classic Backpack">
+                    <img src="assets/images/product_bags/luggage.jpg" class="card-img-top" alt="Luggage">
                     <div class="card-body">
-                        <h5 class="card-title">School Bag</h5>
-                        <p class="text-muted mb-2">₱1,499.00</p>
+                        <h5 class="card-title">Luggage</h5>
+                        <p class="text-muted mb-2">₱122,050.00</p>
                         <p class="small">Perfect for students and everyday use.</p>
                     </div>
                     <div class="card-footer bg-white border-0">
