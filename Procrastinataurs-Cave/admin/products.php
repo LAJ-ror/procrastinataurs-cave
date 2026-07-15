@@ -85,14 +85,16 @@ $result = mysqli_query($conn, $sql);
                      </a>
                  </td>
              </tr>
-         <?php } ?>
+         <?php }
+?>
                     
-   <?php } else { ?>
-
-                        <tr>  
-                         <td colspan="7" class="text-center">No products found.</td>
-                    </tr>
-                <?php } ?>
+   <?php } 
+else { 
+?>
+ <tr>  
+     <td colspan="7" class="text-center">No products found.</td>
+         </tr>
+            <?php } ?>
              </tbody>
         </table>
      </div>
