@@ -36,71 +36,40 @@ include 'includes/header.php';
 
     <div class="container">
         <div class="row">
+            <?php
+            $sql = "SELECT product_id, product_name, description, price, image FROM products ORDER BY product_name ASC";
+            $result = mysqli_query($conn, $sql);
 
-            <!-- Card 1 -->
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card">
-                    <img src="assets/images/product_bags/handbag.avif" class="card-img-top" alt="Handbag">
-                    <div class="card-body">
-                        <h5 class="card-title">Handbag</h5>
-                        <p class="text-muted mb-2">₱380,575.00</p>
-                        <p class="small">Perfect for students and everyday use.</p>
+            if ($result && mysqli_num_rows($result) > 0) {
+                while ($product = mysqli_fetch_assoc($result)) {
+                    $imagePath = !empty($product['image']) ? "assets/images/products/" . $product['image'] : "assets/images/product_bags/luggage.jpg";
+                    $price = number_format($product['price'], 2);
+                    $description = !empty($product['description']) ? $product['description'] : 'No description available.';
+            ?>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card">
+                            <img src="<?php echo htmlspecialchars($imagePath); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($product['product_name']); ?>">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo htmlspecialchars($product['product_name']); ?></h5>
+                                <p class="text-muted mb-2">₱<?php echo htmlspecialchars($price); ?></p>
+                                <p class="small"><?php echo htmlspecialchars($description); ?></p>
+                            </div>
+                            <div class="card-footer bg-white border-0">
+                                <a href="product.php?product_id=<?php echo (int)$product['product_id']; ?>" class="btn btn-outline-dark w-100 mb-2">View Details</a>
+                                <button class="btn btn-dark w-100">Add to Cart</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-footer bg-white border-0">
-                        <a href="product.php" class="btn btn-outline-dark w-100 mb-2">View Details</a>
-                        <button class="btn btn-dark w-100">Add to Cart</button>
-                    </div>
+            <?php
+                }
+            } else {
+            ?>
+                <div class="col-12">
+                    <div class="alert alert-info text-center">No products are available at the moment.</div>
                 </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card">
-                    <img src="assets/images/product_bags/backpack.webp" class="card-img-top" alt="Classic Backpack">
-                    <div class="card-body">
-                        <h5 class="card-title">Backpack</h5>
-                        <p class="text-muted mb-2">₱202,573.00</p>
-                        <p class="small">Perfect for students and everyday use.</p>
-                    </div>
-                    <div class="card-footer bg-white border-0">
-                        <a href="product.php" class="btn btn-outline-dark w-100 mb-2">View Details</a>
-                        <button class="btn btn-dark w-100">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card">
-                    <img src="assets/images/product_bags/travebag.webp" class="card-img-top" alt="Travel Bag">
-                    <div class="card-body">
-                        <h5 class="card-title">Travel Bag</h5>
-                        <p class="text-muted mb-2">₱1,043,524.00</p>
-                        <p class="small">Perfect for students and everyday use.</p>
-                    </div>
-                    <div class="card-footer bg-white border-0">
-                        <a href="product.php" class="btn btn-outline-dark w-100 mb-2">View Details</a>
-                        <button class="btn btn-dark w-100">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card">
-                    <img src="assets/images/product_bags/luggage.jpg" class="card-img-top" alt="Luggage">
-                    <div class="card-body">
-                        <h5 class="card-title">Luggage</h5>
-                        <p class="text-muted mb-2">₱122,050.00</p>
-                        <p class="small">Perfect for students and everyday use.</p>
-                    </div>
-                    <div class="card-footer bg-white border-0">
-                        <a href="product.php" class="btn btn-outline-dark w-100 mb-2">View Details</a>
-                        <button class="btn btn-dark w-100">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-
+            <?php
+            }
+            ?>
         </div>
     </div>
 
