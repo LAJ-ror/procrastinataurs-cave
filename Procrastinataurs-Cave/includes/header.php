@@ -33,7 +33,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
     <!-- Custom CSS -->
     <link rel="stylesheet"
-          href="../style.css">
+          href="style.css">
 
 </head>
 
