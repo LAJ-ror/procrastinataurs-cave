@@ -23,9 +23,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // ==========================
 
     $email = sanitize($_POST['email']);
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $password = $_POST['password'];
-$confirm_password = $_POST['confirm_password'];
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
 
 if ($password !== $confirm_password) {
 
@@ -36,7 +36,7 @@ if ($password !== $confirm_password) {
 }
 else{
 
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    $hashedPassword = $password;
 
 }
     // ==========================
