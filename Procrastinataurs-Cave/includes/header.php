@@ -78,30 +78,30 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         </nav>
 
         <div class="header-actions">
-        <?php if(isset($_SESSION['user_id'])) { ?>
-            <a href="cart.php"
-               class="icon-button">
-                <i class="bi bi-cart"></i>
-                Cart
-            </a>
-            <span class="me-2">
-                Hi,
-                <?php echo htmlspecialchars($_SESSION['first_name']); ?>
-            </span>
+            <?php if(isset($_SESSION['user_id'])) { ?>
+                <a href="cart.php"
+                class="icon-button">
+                    <i class="bi bi-cart"></i>
+                    Cart
+                </a>
+                <span class="me-2">
+                    Hi,
+                    <?php echo htmlspecialchars($_SESSION['first_name']); ?>
+                </span>
 
-            <a href="logout.php"
-               class="sign-in-button">
-                Logout
-            </a>
+                <a href="logout.php"
+                class="sign-in-button">
+                    Logout
+                </a>
 
-        <?php } else { ?>
+            <?php } else { ?>
 
-            <a href="login.php"
-               class="sign-in-button">
-                Login
-            </a>
+                <a href="login.php"
+                class="sign-in-button">
+                    Login
+                </a>
 
-        <?php } ?>
+            <?php } ?>
 
         </div>
     </div>
