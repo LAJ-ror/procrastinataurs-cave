@@ -109,13 +109,13 @@ CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `total_amount` decimal(10,2) NOT NULL,
-  `payment_method` varchar(50) NOT NULL,
-  `payment_proof` varchar(255) DEFAULT NULL,
+  `payment_method` enum('Cash on Delivery','GCash','Bank Transfer') NOT NULL,
+  `reference_number` varchar(100) DEFAULT NULL,
   `payment_status` enum('Pending','Paid','Rejected') DEFAULT 'Pending',
   `shipping_address` text NOT NULL,
   `order_status` enum('Pending','Processing','Shipped','Completed','Cancelled') DEFAULT 'Pending',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
