@@ -42,6 +42,14 @@ a {
     border-bottom: 1px solid var(--line);
 }
 
+.top-bar{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.97);
+    border-bottom: 1px solid var(--line);
+}
+
 .header-inner {
     width: auto;
     min-height: 72px;
