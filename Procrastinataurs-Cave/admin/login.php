@@ -7,6 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 $message = "";
+$remembered_email = $_COOKIE['remember_email'] ?? '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
