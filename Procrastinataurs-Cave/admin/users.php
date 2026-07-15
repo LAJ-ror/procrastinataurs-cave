@@ -71,12 +71,16 @@ $result = mysqli_query($conn, $sql);
                                     </a>
                                 </td>
                             </tr>
-                        <?php } ?>
-                    <?php } else { ?>
-                        <tr>
-                            <td colspan="5" class="text-center">No admin users found.</td>
-                        </tr>
-                    <?php } ?>
+                        <?php } 
+?>
+                    <?php }
+else { 
+    ?>
+        <tr>
+         <td colspan="5" class="text-center">No admin users found.</td>
+             </tr>
+                 <?php }
+?>
                 </tbody>
             </table>
         </div>
