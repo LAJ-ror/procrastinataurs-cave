@@ -51,7 +51,7 @@ include 'includes/header.php';
             <p>
 
                 This website was created as part of our
-                Final Project in Web Development.
+                Final Project in Application Development and Emerging Technologies.
 
             </p>
 
@@ -79,13 +79,13 @@ include 'includes/header.php';
 
                 <div class="card-body">
 
-                    <img src="assets/images/profile.png"
+                    <img src="assets/images/profile1.png"
                          class="rounded-circle mb-3"
                          width="120">
 
                     <h5>
 
-                        Member 1
+                        Lei Caabay
 
                     </h5>
 
@@ -107,13 +107,13 @@ include 'includes/header.php';
 
                 <div class="card-body">
 
-                    <img src="assets/images/profile.png"
+                    <img src="assets/images/profile2.png"
                          class="rounded-circle mb-3"
                          width="120">
 
                     <h5>
 
-                        Member 2
+                       Angelika Magandingan
 
                     </h5>
 
@@ -135,13 +135,13 @@ include 'includes/header.php';
 
                 <div class="card-body">
 
-                    <img src="assets/images/profile.png"
+                    <img src="assets/images/profile3.png"
                          class="rounded-circle mb-3"
                          width="120">
 
                     <h5>
 
-                        Member 3
+                       Juliana Rey
 
                     </h5>
 
