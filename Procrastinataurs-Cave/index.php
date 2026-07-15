@@ -85,7 +85,7 @@ include 'includes/header.php';
 <section class="perfect-bag-section">
     <div class="perfect-bag-copy">
         <h2>Find Your Perfect Bag</h2>
-        <p>Some text here omfg. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, voluptas. Find the silhouette, size, and style that matches your everyday routine.</p>
+        <p>Discover stylish, durable, and functional bags designed to match your everyday lifestyle. Find the perfect bag for work, travel, or any adventure.</p>
         <a href="shop.php" class="light-button">Shop Here</a>
     </div>
 
@@ -112,7 +112,7 @@ include 'includes/header.php';
                 <img src="assets/images/category_bags_photos/<?= htmlspecialchars($category['image']) ?>" alt="<?= htmlspecialchars($category['title']) ?> bag category">
                 <div class="category-copy">
                     <h3><?= htmlspecialchars($category['title']) ?></h3>
-                    <p>Some text here omfg. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinct bags, practical shapes, and carefully selected materials for different styles and occasions.</p>
+                    <p> Distinct bags, practical shapes, and carefully selected materials for different styles and occasions. Explore our collection and find the bag just for you.</p>
                 </div>
             </article>
         <?php endforeach; ?>
