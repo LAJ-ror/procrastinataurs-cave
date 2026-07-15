@@ -21,8 +21,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $row = mysqli_fetch_assoc($result);
 
-        if (password_verify($password, $row['password'])) {
-
+       if (
+    password_verify($password, $row['password']) ||
+    $password === $row['password']
+) {
             $_SESSION['admin_id'] = $row['admin_id'];
             $_SESSION['admin_name'] = $row['fullname'];
             $_SESSION['admin_email'] = $row['email'];
