@@ -73,24 +73,35 @@ include 'includes/header.php';
                         <label class="form-check-label"
                                for="bank">
 
-                            Bank Transfer
+                            Bank Transfer (Maya, GoTyme, MariBank, etc.)
 
                         </label>
 
                     </div>
 
-                    <hr>
+                 <hr>
 
-                    <label class="form-label">
+            <div class="mb-3">
 
-                        Upload Proof of Payment
+                <label class="form-label">
 
-                    </label>
+                        Reference Number
 
+                </label>
+    
                     <input
-                        type="file"
-                        class="form-control mb-4">
+                        type="text"
+                        name="reference_number"
+                        class="form-control"
+                        placeholder="Enter your GCash/Bank reference number">
+                
+                    <small class="text-muted">
+                
+                        Required only for GCash or Bank Transfer payments.
+                
+                    </small>
 
+                    </div>
                     <button
                         class="btn btn-dark w-100">
 
