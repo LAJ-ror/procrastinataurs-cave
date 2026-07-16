@@ -33,85 +33,112 @@ $total = 0;
 
     <?php if ($result && mysqli_num_rows($result) > 0) { ?>
 
-        <div class="card shadow-sm">
-            <div class="card-body table-responsive">
+        <form action="checkout.php" method="POST">
 
-                <table class="table align-middle">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Product</th>
-                            <th>Price</th>
-                            <th style="width: 160px;">Quantity</th>
-                            <th>Subtotal</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
+            <div class="card shadow-sm">
+                <div class="card-body table-responsive">
 
-                    <tbody>
-                        <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-                            <?php
-                                $subtotal = $row['price'] * $row['quantity'];
-                                $total += $subtotal;
-                            ?>
+                    <table class="table align-middle">
+                        <thead class="table-dark">
                             <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <?php if (!empty($row['image'])) { ?>
-                                            <img src="assets/images/bag_photos/<?php echo htmlspecialchars($row['image']); ?>"
-                                                 width="80"
-                                                 height="80"
-                                                 class="me-3 rounded"
-                                                 style="object-fit: cover;">
-                                        <?php } else { ?>
-                                            <div class="bg-light rounded me-3 d-flex align-items-center justify-content-center"
-                                                 style="width:80px; height:80px;">
-                                                No Img
-                                            </div>
-                                        <?php } ?>
-
-                                        <div>
-                                            <strong><?php echo htmlspecialchars($row['product_name']); ?></strong>
-                                        </div>
-                                    </div>
-                                </td>
-
-                                <td>₱<?php echo number_format($row['price'], 2); ?></td>
-
-                                <td>
-                                    <form action="update_cart.php" method="POST" class="d-flex">
-                                        <input type="hidden" name="cart_id" value="<?php echo $row['cart_id']; ?>">
-                                        <input type="number"
-                                               name="quantity"
-                                               value="<?php echo $row['quantity']; ?>"
-                                               min="1"
-                                               class="form-control form-control-sm me-2">
-                                        <button type="submit" class="btn btn-sm btn-outline-dark">
-                                            Update
-                                        </button>
-                                    </form>
-                                </td>
-
-                                <td>₱<?php echo number_format($subtotal, 2); ?></td>
-
-                                <td>
-                                    <a href="remove_from_cart.php?cart_id=<?php echo $row['cart_id']; ?>"
-                                       class="btn btn-danger btn-sm"
-                                       onclick="return confirm('Remove this item from cart?');">
-                                        Remove
-                                    </a>
-                                </td>
+                                <th>Select</th>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Subtotal</th>
+                                <th>Action</th>
                             </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
+                        </thead>
 
+                        <tbody>
+                            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                                <?php
+                                    $subtotal = $row['price'] * $row['quantity'];
+                                    $total += $subtotal;
+                                ?>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox"
+                                               name="selected_items[]"
+                                               value="<?php echo $row['cart_id']; ?>"
+                                               checked>
+                                    </td>
+
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <?php if (!empty($row['image'])) { ?>
+                                                <img src="assets/images/bag_photos/<?php echo htmlspecialchars($row['image']); ?>"
+                                                     width="80"
+                                                     height="80"
+                                                     class="me-3 rounded"
+                                                     style="object-fit: cover;"
+                                                     alt="<?php echo htmlspecialchars($row['product_name']); ?>">
+                                            <?php } else { ?>
+                                                <div class="bg-light rounded me-3 d-flex align-items-center justify-content-center"
+                                                     style="width:80px; height:80px;">
+                                                    No Img
+                                                </div>
+                                            <?php } ?>
+
+                                            <div>
+                                                <strong><?php echo htmlspecialchars($row['product_name']); ?></strong>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        ₱<?php echo number_format($row['price'], 2); ?>
+                                    </td>
+
+                                    <td>
+                                        <?php echo $row['quantity']; ?>
+                                    </td>
+
+                                    <td>
+                                        ₱<?php echo number_format($subtotal, 2); ?>
+                                    </td>
+
+                                    <td>
+                                        <a href="remove_from_cart.php?cart_id=<?php echo $row['cart_id']; ?>"
+                                           class="btn btn-danger btn-sm"
+                                           onclick="return confirm('Remove this item from cart?');">
+                                            Remove
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+
+                </div>
             </div>
-        </div>
 
-        <div class="text-end mt-4">
-            <h3>Total: ₱<?php echo number_format($total, 2); ?></h3>
-            <a href="checkout.php" class="btn btn-dark btn-lg mt-2">Proceed to Checkout</a>
-        </div>
+            <div class="row justify-content-end mt-4">
+                <div class="col-lg-5">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-dark text-white">
+                            Order Summary
+                        </div>
+
+                        <div class="card-body">
+                            <p class="mb-3">
+                                Total
+                                <span class="float-end">
+                                    ₱<?php echo number_format($total, 2); ?>
+                                </span>
+                            </p>
+
+                            <hr>
+
+                            <button type="submit" class="btn btn-dark w-100">
+                                Checkout Selected Items
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
 
     <?php } else { ?>
 
@@ -120,7 +147,9 @@ $total = 0;
         </div>
 
         <div class="text-center">
-            <a href="shop.php" class="btn btn-dark">Continue Shopping</a>
+            <a href="shop.php" class="btn btn-dark">
+                Continue Shopping
+            </a>
         </div>
 
     <?php } ?>
