@@ -15,6 +15,7 @@ $sql = "SELECT p.product_id, p.product_name, p.price, p.stock, p.image, c.catego
         FROM products p
         LEFT JOIN categories c ON p.category_id = c.category_id
         ORDER BY p.product_id DESC";
+
 $result = mysqli_query($conn, $sql);
 ?>
 
@@ -28,7 +29,7 @@ $result = mysqli_query($conn, $sql);
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand fw-bold" href="dashboard.php">Procrastinataurs' Cave - Admin</a>
         <div class="ms-auto">
@@ -65,40 +66,40 @@ $result = mysqli_query($conn, $sql);
                             <tr>
                                 <td><?php echo $row['product_id']; ?></td>
                                 <td>
-                                    <img src="../assets/images/products/<?php echo $row['image']; ?>"
-                                         alt="Product"
-                                         width="70"
-                                         class="rounded">
+                                    <?php if (!empty($row['image'])) { ?>
+                                        <img src="../assets/images/bag_photos/<?php echo htmlspecialchars($row['image']); ?>"
+                                             alt="Product"
+                                             width="70"
+                                             class="rounded">
+                                    <?php } else { ?>
+                                        <div class="bg-light text-center rounded p-3" style="width:70px;">No Img</div>
+                                    <?php } ?>
                                 </td>
-                                <td><?php echo $row['product_name']; ?></td>
-                                <td><?php echo $row['category_name']; ?></td>
+                                <td><?php echo htmlspecialchars($row['product_name']); ?></td>
+                                <td><?php echo htmlspecialchars($row['category_name']); ?></td>
                                 <td>₱<?php echo number_format($row['price'], 2); ?></td>
                                 <td><?php echo $row['stock']; ?></td>
                                 <td>
                                     <a href="edit_product.php?id=<?php echo $row['product_id']; ?>"
-                                     class="btn btn-primary btn-sm me-1">Edit</a>
+                                       class="btn btn-primary btn-sm me-1">Edit</a>
 
                                     <a href="delete_product.php?id=<?php echo $row['product_id']; ?>"
-                                 class="btn btn-danger btn-sm"
-                             onclick="return confirm('Are you sure you want to delete this product?');">
-                          Delete
-                     </a>
-                 </td>
-             </tr>
-         <?php }
-?>
-                    
-   <?php } 
-else { 
-?>
- <tr>  
-     <td colspan="7" class="text-center">No products found.</td>
-         </tr>
-            <?php } ?>
-             </tbody>
-        </table>
-     </div>
- </div>
+                                       class="btn btn-danger btn-sm"
+                                       onclick="return confirm('Are you sure you want to delete this product?');">
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    <?php } else { ?>
+                        <tr>
+                            <td colspan="7" class="text-center">No products found.</td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
