@@ -25,9 +25,9 @@ include 'includes/header.php';
 
     <div class="row align-items-center mb-5">
 
-        <div class="col-md-6">
+        <div class="col-md-4">
 
-            <img src="assets/images/about.jpg"
+            <img src="assets/images/Temp_Logo.svg"
                  class="img-fluid rounded shadow">
 
         </div>
@@ -80,8 +80,9 @@ include 'includes/header.php';
                 <div class="card-body">
 
                     <img src="assets/images/profile1.png"
-                         class="rounded-circle mb-3"
-                         width="120">
+                         class="rounded-circle img-fluid d-block mx-auto mb-3"
+                         width="120"
+                         height = "120">
 
                     <h5>
 
@@ -105,11 +106,12 @@ include 'includes/header.php';
 
             <div class="card shadow text-center">
 
-                <div class="card-body">
+                <div class="card-body text-center" >
 
-                    <img src="assets/images/profile2.png"
-                         class="rounded-circle mb-3"
-                         width="120">
+                    <img src="assets/images/profile2.jpg"
+                         class="rounded-circle img-fluid d-block mx-auto mb-3"
+                         width="120"
+                         height = "120" >
 
                     <h5>
 
@@ -135,9 +137,10 @@ include 'includes/header.php';
 
                 <div class="card-body">
 
-                    <img src="assets/images/profile3.png"
-                         class="rounded-circle mb-3"
-                         width="120">
+                    <img src="assets/images/profile3.jpg"
+                         class="rounded-circle img-fluid d-block mx-auto mb-3"
+                         width="120"
+                         height = "120">
 
                     <h5>
 
