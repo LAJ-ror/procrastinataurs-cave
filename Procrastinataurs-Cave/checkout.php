@@ -1,135 +1,129 @@
 <?php
+require_once 'includes/db.php';
+require_once 'includes/session.php';
+
 include 'includes/header.php';
+
+$user_id = (int) $_SESSION['user_id'];
+
+// Get cart items for this user
+$sql = "SELECT c.cart_id, c.quantity, p.product_name, p.price
+        FROM cart c
+        INNER JOIN products p ON c.product_id = p.product_id
+        WHERE c.user_id = '$user_id'
+        ORDER BY c.cart_id DESC";
+
+$result = mysqli_query($conn, $sql);
+
+$items = [];
+$total = 0;
+
+if ($result && mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $subtotal = $row['price'] * $row['quantity'];
+        $total += $subtotal;
+        $items[] = $row;
+    }
+}
 ?>
 
 <div class="container my-5">
 
     <h1 class="text-center fw-bold mb-5">
-
         Checkout
-
     </h1>
 
-    <div class="row">
+    <?php if (!empty($items)) { ?>
 
-        <!-- Customer Information -->
+        <div class="row">
 
-        <div class="col-lg-7">
+            <!-- Customer Information -->
+            <div class="col-lg-7">
 
-            <div class="card shadow-sm mb-4">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-dark text-white">
+                        Customer Information
+                    </div>
 
-                <div class="card-header bg-dark text-white">
+                    <div class="card-body">
 
-                    Customer Information
+                        <div class="mb-3">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-control" placeholder="Juan Dela Cruz">
+                        </div>
 
+                        <div class="mb-3">
+                            <label class="form-label">Contact Number</label>
+                            <input type="tel" class="form-control" placeholder="09XXXXXXXXX">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Complete Address</label>
+                            <textarea class="form-control" rows="4"></textarea>
+                        </div>
+
+                    </div>
                 </div>
 
-                <div class="card-body">
+            </div>
 
-                    <div class="mb-3">
+            <!-- Order Summary -->
+            <div class="col-lg-5">
 
-                        <label class="form-label">
-
-                            Full Name
-
-                        </label>
-
-                        <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Juan Dela Cruz">
-
+                <div class="card shadow-sm">
+                    <div class="card-header bg-dark text-white">
+                        Order Summary
                     </div>
 
-                    <div class="mb-3">
+                    <div class="card-body">
 
-                        <label class="form-label">
+                        <?php foreach ($items as $item) { ?>
+                            <p class="mb-2">
+                                <?php echo htmlspecialchars($item['product_name']); ?>
+                                <span class="float-end">
+                                    ₱<?php echo number_format($item['price'] * $item['quantity'], 2); ?>
+                                </span>
+                            </p>
 
-                            Contact Number
+                            <small class="text-muted d-block mb-2">
+                                Quantity: <?php echo $item['quantity']; ?>
+                            </small>
 
-                        </label>
+                            <hr>
+                        <?php } ?>
 
-                        <input
-                            type="tel"
-                            class="form-control"
-                            placeholder="09XXXXXXXXX">
+                        <h5>
+                            Total
+                            <span class="float-end">
+                                ₱<?php echo number_format($total, 2); ?>
+                            </span>
+                        </h5>
+
+                        <a href="payment.php"
+                           class="btn btn-dark w-100 mt-4">
+                            Continue to Payment
+                        </a>
 
                     </div>
-
-                    <div class="mb-3">
-
-                        <label class="form-label">
-
-                            Complete Address
-
-                        </label>
-
-                        <textarea
-                            class="form-control"
-                            rows="4"></textarea>
-
-                    </div>
-
                 </div>
 
             </div>
 
         </div>
 
-        <!-- Order Summary -->
+    <?php } else { ?>
 
-        <div class="col-lg-5">
-
-            <div class="card shadow-sm">
-
-                <div class="card-header bg-dark text-white">
-
-                    Order Summary
-
-                </div>
-
-                <div class="card-body">
-
-                    <p>
-
-                        Classic Backpack
-
-                        <span class="float-end">
-
-                            ₱1,499.00
-
-                        </span>
-
-                    </p>
-
-                    <hr>
-
-                    <h5>
-
-                        Total
-
-                        <span class="float-end">
-
-                            ₱1,499.00
-
-                        </span>
-
-                    </h5>
-
-                    <a href="payment.php"
-                       class="btn btn-dark w-100 mt-4">
-
-                        Continue to Payment
-
-                    </a>
-
-                </div>
-
-            </div>
-
+        <div class="alert alert-info text-center">
+            Your cart is empty.
         </div>
 
-    </div>
+        <div class="text-center">
+            <a href="shop.php" class="btn btn-dark">
+                Continue Shopping
+            </a>
+        </div>
+
+    <?php } ?>
 
 </div>
 
