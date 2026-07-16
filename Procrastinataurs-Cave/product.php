@@ -67,11 +67,14 @@ $product = mysqli_fetch_assoc($result);
                 <li>Perfect for Everyday Use</li>
             </ul>
 
-            <div class="mt-4">
-                <button class="btn btn-dark btn-lg">
+           <form action="add_to_cart.php" method="POST">
+                <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
+                <input type="hidden" name="quantity" value="1">
+            
+                <button type="submit" class="btn btn-dark btn-lg">
                     Add to Cart
                 </button>
-            </div>
+                    </form>
 
         </div>
 
