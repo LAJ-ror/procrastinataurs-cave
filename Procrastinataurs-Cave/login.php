@@ -24,36 +24,57 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($password === $row['password']) {
 
-            $_SESSION['user_id'] = $row['user_id'];
-            $_SESSION['first_name'] = $row['first_name'];
-            $_SESSION['email'] = $row['email'];
+    if ($row['is_verified'] == 0) {
 
-            // Record login in audit log
-            recordAudit(
-                $conn,
-                "Buyer",
-                $_SESSION['user_id'],
-                "User Logged In"
+        $message = "<div class='alert alert-warning'>
+                        Please verify your email first before logging in.
+                    </div>";
+
+    } else {
+
+        $_SESSION['user_id'] = $row['user_id'];
+        $_SESSION['first_name'] = $row['first_name'];
+        $_SESSION['email'] = $row['email'];
+
+        recordAudit(
+            $conn,
+            "Buyer",
+            $_SESSION['user_id'],
+            "User Logged In"
+        );
+
+        if (isset($_POST['remember_me'])) {
+
+            setcookie(
+                'remember_email',
+                $email,
+                time() + (30 * 24 * 60 * 60),
+                '/'
             );
-
-            // Remember Me
-            if (isset($_POST['remember_me'])) {
-                setcookie('remember_email', $email, time() + (30 * 24 * 60 * 60), '/');
-            } else {
-                setcookie('remember_email', '', time() - 3600, '/');
-            }
-
-            header("Location: index.php");
-            exit();
 
         } else {
 
-            $message = "<div class='alert alert-danger'>
-                            Incorrect password.
-                        </div>";
+            setcookie(
+                'remember_email',
+                '',
+                time() - 3600,
+                '/'
+            );
 
         }
 
+        header("Location: index.php");
+        exit();
+
+    }
+
+} else {
+
+    $message = "<div class='alert alert-danger'>
+                    Incorrect password.
+                </div>";
+
+}
     } else {
 
         $message = "<div class='alert alert-danger'>
@@ -61,6 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>";
 
     }
+
 }
 
 ?>
