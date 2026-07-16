@@ -5,10 +5,10 @@
    :) final proj
 ===================================== */
 
-$host = "localhost";
-$username = "root";
-$password = "";
-$database = "procrastinataurs_cave";
+$host = "sql212.infinityfree.com";
+$username = "if0_42425269";
+$password = "saveusfrth1sh3L";
+$database = "if0_42425269_procrastinataurs";
 
 $conn = mysqli_connect($host, $username, $password, $database);
 
