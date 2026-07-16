@@ -4,13 +4,16 @@ require_once 'includes/functions.php';
 
 include 'includes/header.php';
 
-if (!isset($_GET['id'])) {
+// Accept either `id` or `product_id` from links/forms for compatibility
+if (isset($_GET['id'])) {
+    $product_id = intval($_GET['id']);
+} elseif (isset($_GET['product_id'])) {
+    $product_id = intval($_GET['product_id']);
+} else {
     echo "<div class='container my-5'><div class='alert alert-danger'>Product not found.</div></div>";
     include 'includes/footer.php';
     exit();
 }
-
-$product_id = intval($_GET['id']);
 
 $sql = "SELECT p.*, c.category_name
         FROM products p
