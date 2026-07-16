@@ -39,14 +39,14 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
 <body>
     <div class="top-bar">
-    <div class="brand">
-        <a href="admin/login.php" class="seller-link">
-            Seller Center
-        </a>
+        <div class="brand">
+            <a href="admin/login.php" class="seller-link">
+                Seller Center
+            </a>
+
+        </div>
 
     </div>
-
-</div>
 
 <header class="site-header">
     <div class="header-inner">
