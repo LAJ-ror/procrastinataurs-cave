@@ -2,16 +2,46 @@
 require_once 'includes/db.php';
 require_once 'includes/session.php';
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 include 'includes/header.php';
 
 $user_id = (int) $_SESSION['user_id'];
 
-// Get cart items for this user
+// Receive selected items from cart
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['selected_items'])) {
+    $_SESSION['selected_cart_ids'] = array_map('intval', $_POST['selected_items']);
+    header("Location: checkout.php");
+    exit();
+}
+
+$selected_cart_ids = isset($_SESSION['selected_cart_ids']) ? $_SESSION['selected_cart_ids'] : [];
+
+if (empty($selected_cart_ids)) {
+    ?>
+    <div class="container my-5">
+        <div class="alert alert-info text-center">
+            No items selected for checkout.
+        </div>
+        <div class="text-center">
+            <a href="cart.php" class="btn btn-dark">Back to Cart</a>
+        </div>
+    </div>
+    <?php
+    include 'includes/footer.php';
+    exit();
+}
+
+// Convert selected IDs to comma-separated string
+$ids = implode(',', array_map('intval', $selected_cart_ids));
+
 $sql = "SELECT c.cart_id, c.quantity, p.product_name, p.price
         FROM cart c
         INNER JOIN products p ON c.product_id = p.product_id
         WHERE c.user_id = '$user_id'
-        ORDER BY c.cart_id DESC";
+        AND c.cart_id IN ($ids)";
 
 $result = mysqli_query($conn, $sql);
 
@@ -37,9 +67,7 @@ if ($result && mysqli_num_rows($result) > 0) {
 
         <div class="row">
 
-            <!-- Customer Information -->
             <div class="col-lg-7">
-
                 <div class="card shadow-sm mb-4">
                     <div class="card-header bg-dark text-white">
                         Customer Information
@@ -64,12 +92,9 @@ if ($result && mysqli_num_rows($result) > 0) {
 
                     </div>
                 </div>
-
             </div>
 
-            <!-- Order Summary -->
             <div class="col-lg-5">
-
                 <div class="card shadow-sm">
                     <div class="card-header bg-dark text-white">
                         Order Summary
@@ -99,14 +124,12 @@ if ($result && mysqli_num_rows($result) > 0) {
                             </span>
                         </h5>
 
-                        <a href="payment.php"
-                           class="btn btn-dark w-100 mt-4">
+                        <a href="payment.php" class="btn btn-dark w-100 mt-4">
                             Continue to Payment
                         </a>
 
                     </div>
                 </div>
-
             </div>
 
         </div>
@@ -114,19 +137,15 @@ if ($result && mysqli_num_rows($result) > 0) {
     <?php } else { ?>
 
         <div class="alert alert-info text-center">
-            Your cart is empty.
+            No valid selected items were found.
         </div>
 
         <div class="text-center">
-            <a href="shop.php" class="btn btn-dark">
-                Continue Shopping
-            </a>
+            <a href="cart.php" class="btn btn-dark">Back to Cart</a>
         </div>
 
     <?php } ?>
 
 </div>
 
-<?php
-include 'includes/footer.php';
-?>
+<?php include 'includes/footer.php'; ?>
