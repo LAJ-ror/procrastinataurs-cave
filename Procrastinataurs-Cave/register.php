@@ -2,13 +2,14 @@
 
 require_once 'includes/db.php';
 require_once 'includes/functions.php';
+require_once 'mailer.php';
 
 $message = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // ==========================
-    // Personal Information   
+    // Personal Information
     // ==========================
 
     $first_name = sanitize($_POST['first_name']);
@@ -24,21 +25,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $email = sanitize($_POST['email']);
     $password = $_POST['password'];
-    $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
+    $token = bin2hex(random_bytes(32));
 
-if ($password !== $confirm_password) {
+    if ($password !== $confirm_password) {
 
-    $message = "<div class='alert alert-danger'>
-                    Passwords do not match.
-                </div>";
+        $message = "<div class='alert alert-danger'>
+                        Passwords do not match.
+                    </div>";
 
-}
-else{
+    } else {
 
-    $hashedPassword = $password;
+        $Password = $password;
 
-}
+    }
+
     // ==========================
     // Contact Information
     // ==========================
@@ -56,11 +57,14 @@ else{
                         Passwords do not match.
                     </div>";
 
-                    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                         $message = "<div class='alert alert-danger'>
-                          Invalid email address.
-                          </div>";
-                    }
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+
+            $message = "<div class='alert alert-danger'>
+                            Invalid email address.
+                        </div>";
+
+        }
+
     } else {
 
         // Check duplicate email
@@ -71,12 +75,12 @@ else{
 
         $userId = mysqli_insert_id($conn);
 
-recordAudit(
-    $conn,
-    "Buyer",
-    $userId,
-    "User Registered"
-);
+        recordAudit(
+            $conn,
+            "Buyer",
+            $userId,
+            "User Registered"
+        );
 
         if (mysqli_num_rows($checkEmail) > 0) {
 
@@ -92,39 +96,48 @@ recordAudit(
 
             $sql = "INSERT INTO users
             (
-                first_name,
-                middle_name,
-                last_name,
-                suffix,
-                birthdate,
-                gender,
-                email,
-                password,
-                address,
-                contact
-            )
+              first_name,
+              middle_name,
+              last_name,
+              suffix,
+              birthdate,
+              gender,
+              email,
+              password,
+              address,
+              contact,
+              verification_code,
+              is_verified
+           )
             VALUES
             (
-                '$first_name',
-                '$middle_name',
-                '$last_name',
-                '$suffix',
-                '$birthdate',
-                '$gender',
-                '$email',
-                '$hashedPassword',
-                '$address',
-                '$contact'
+              '$first_name',
+              '$middle_name',
+              '$last_name',
+              '$suffix',
+              '$birthdate',
+              '$gender',
+              '$email',
+              '$password',
+              '$address',
+              '$contact',
+              '$token',
+               0
             )";
 
             if (mysqli_query($conn, $sql)) {
 
-                echo "
-                <script>
-                    alert('Registration Successful!');
+                sendVerificationEmail($email, $token);
+
+                echo "<script>
+
+                    alert('Registration successful! Please check your email.');
+
                     window.location='login.php';
-                </script>
-                ";
+
+                </script>";
+
+                exit();
 
             } else {
 
