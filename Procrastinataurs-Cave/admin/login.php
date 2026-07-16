@@ -7,6 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 $message = "";
+$remembered_email = isset($_COOKIE['admin_email']) ? $_COOKIE['admin_email'] : "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -20,11 +21,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $row = mysqli_fetch_assoc($result);
 
-        if ($password === $row['password']) {
-
+       if (
+    password_verify($password, $row['password']) ||
+    $password === $row['password']
+) {
             $_SESSION['admin_id'] = $row['admin_id'];
             $_SESSION['admin_name'] = $row['fullname'];
             $_SESSION['admin_email'] = $row['email'];
+
+            if (isset($_POST['remember_me'])) {
+                setcookie("admin_email", $row['email'], time() + (86400 * 7), "/");
+            } else {
+                setcookie("admin_email", "", time() - 3600, "/");
+            }
+
+            if (function_exists('recordAudit')) {
+                recordAudit($conn, "Admin", $row['admin_id'], "Admin Logged In");
+            }
 
             header("Location: dashboard.php");
             exit();
@@ -37,67 +50,92 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message = "<div class='alert alert-danger'>Admin account not found.</div>";
     }
 }
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Procrastinataurs' Cave</title>
+    <title>Admin Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+          href="style.css">
 
-    <link rel="stylesheet" href="style.css">
-
+    <style>
+        body{
+            background:#f8f9fa;
+        }
+        .login-wrap{
+            min-height:80vh;
+            display:flex;
+            align-items:center;
+        }
+    </style>
 </head>
-
-
 <body>
 
 <header class="site-header">
     <div class="header-inner">
-        <a class="brand" href="../index.php" aria-label="Procrastinataurs' Cave Home">
-            <img src="../assets/images/Temp_Logo.svg" alt="Procrastinataurs' Cave logo" class="brand-logo">
-            <span>Procrastinataurs’ Cave</span>
+        <a class="brand"
+           href="../index.php">
+            <img src="../assets/images/Temp_Logo.svg"
+                 class="brand-logo"
+                 alt="Logo">
+            <span>
+                Procrastinataurs' Cave
+            </span>
         </a>
+
     </div>
+
 </header>
 
-<div class="container my-5">
-    <div class="row justify-content-center">
-        <div class="col-md-5">
-            <div class="card shadow">
-                <div class="card-header text-center">
-                    <h3>Admin Login</h3>
-                    <p class="text-muted mb-0">Login to access the admin panel.</p>
-                </div>
-
-                <div class="card-body">
-                    <?php echo $message; ?>
-
-                    <form method="POST">
-                        <div class="mb-3">
-                            <label class="form-label">Email Address</label>
-                            <input type="email" name="email" class="form-control" required>
+        <div class="container login-wrap">
+            <div class="row justify-content-center w-100">
+                <div class="col-md-5">
+                    <div class="card shadow">
+                        <div class="card-header text-center text-white" style="background-color: var(--olive);">
+                            <h3 class="mb-0">Admin Login</h3>
+                            <p class="mb-0 small">Login to access the admin panel</p>
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Password</label>
-                            <input type="password" name="password" class="form-control" required>
-                        </div>
+                        <div class="card-body p-4">
+                            <?php echo $message; ?>
 
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-dark">Login</button>
+                            <form method="POST" action="">
+                                <div class="mb-3">
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email"
+                                        name="email"
+                                        class="form-control"
+                                        value="<?php echo htmlspecialchars($remembered_email); ?>"
+                                        required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" name="password" class="form-control" required>
+                                </div>
+
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" name="remember_me" id="remember_me">
+                                    <label class="form-check-label" for="remember_me">
+                                        Remember Me
+                                    </label>
+                                </div>
+
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-dark" style="background-color: var(--olive-dark);">Login</button>
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
-<?php include '../includes/footer.php'; ?>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
