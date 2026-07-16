@@ -84,10 +84,14 @@ $result = mysqli_query($conn, $sql);
                             <p class="small"><?php echo htmlspecialchars($row['description']); ?></p>
                         </div>
 
-                        <div class="card-footer bg-white border-0">
-                            <a href="product.php?id=<?php echo $row['product_id']; ?>" class="btn btn-outline-dark w-100 mb-2">View Details</a>
-                            <button class="btn btn-dark w-100">Add to Cart</button>
-                        </div>
+                       <form action="add_to_cart.php" method="POST">
+                            <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>">
+                            <input type="hidden" name="quantity" value="1">
+                        
+                            <button type="submit" class="btn btn-dark w-100">
+                                Add to Cart
+                            </button>
+                                </form>
                     </div>
                 </div>
             <?php } ?>
